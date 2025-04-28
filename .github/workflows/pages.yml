@@ -28,7 +28,7 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           # idem: dist/<nome-da-app>/browser
-          path: dist/beleza-conectada/browser
+          path: dist/beleza-conectada
 
   deploy:
     needs: build
