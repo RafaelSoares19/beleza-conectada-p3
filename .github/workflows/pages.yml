@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: beleza-conectada   # já estamos DENTRO dessa pasta
+        working-directory: beleza-conectada
     steps:
       - uses: actions/checkout@v4
 
@@ -24,10 +24,9 @@ jobs:
           npx ng build --configuration production
           --base-href "/beleza-conectada-p3/"
 
-      # ▼ caminho relativo à pasta 'beleza-conectada'
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/beleza-conectada
+          path: beleza-conectada/dist/beleza-conectada   # <- aqui
 
   deploy:
     needs: build
