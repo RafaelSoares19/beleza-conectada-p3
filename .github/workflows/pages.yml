@@ -2,16 +2,15 @@ name: build-and-deploy
 
 on:
   push:
-    branches: [main]          # roda a cada push no main
-  workflow_dispatch:          # botão “Run workflow”
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     defaults:
       run:
-        # 👉 troque se sua pasta Angular tiver outro nome
-        working-directory: beleza-conectada
+        working-directory: beleza-conectada   # já estamos DENTRO dessa pasta
     steps:
       - uses: actions/checkout@v4
 
@@ -20,15 +19,15 @@ jobs:
           node-version: 20
 
       - run: npm ci
-      # ⚠️ Ajuste o base-href com o nome exato do repositório
+
       - run: >
           npx ng build --configuration production
           --base-href "/beleza-conectada-p3/"
 
+      # ▼ caminho relativo à pasta 'beleza-conectada'
       - uses: actions/upload-pages-artifact@v3
         with:
-          # idem: dist/<nome-da-app>/browser
-          path: beleza-conectada/dist/beleza-conectada
+          path: dist/beleza-conectada
 
   deploy:
     needs: build
