@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: beleza-conectada
+        working-directory: beleza-conectada        # já dentro da pasta Angular
     steps:
       - uses: actions/checkout@v4
 
@@ -20,14 +20,18 @@ jobs:
 
       - run: npm ci
 
-      - run: >
-          npx ng build --configuration production
-          --base-href "/beleza-conectada-p3/"
-          - run: ls -R beleza-conectada/dist
+      # 1️⃣ build
+      - run: |
+          npx ng build --configuration production \
+            --base-href "/beleza-conectada-p3/"
 
+      # 2️⃣ listar a pasta para conferência (mantém enquanto testa)
+      - run: ls -R dist
+
+      # 3️⃣ publicar artefato — caminho relativo à RAIZ do repositório
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: beleza-conectada/dist/beleza-conectada   # <- aqui
+          path: beleza-conectada/dist/beleza-conectada   # contém index.html
 
   deploy:
     needs: build
