@@ -23,6 +23,7 @@ jobs:
       - run: >
           npx ng build --configuration production
           --base-href "/beleza-conectada-p3/"
+          - run: ls -R beleza-conectada/dist
 
       - uses: actions/upload-pages-artifact@v3
         with:
