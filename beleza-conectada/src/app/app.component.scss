@@ -1,0 +1,21 @@
+/* app.component.scss */
+:host {
+    /* Garante que o componente ocupe a tela toda */
+    display: block;
+    min-height: 100vh;
+  
+    /* Fundo – ajustado para cobrir e ficar fixo */
+    background: url('/assets/images/barbershop-bg.jpg') center / cover no-repeat fixed;
+  
+    /* Fonte clara para contraste — opcional */
+    color: #f8f8f8;
+  }
+  
+  /* (Opcional) Overlay escurecido p/ leitura melhor */
+  :host::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: -1;              /* fica atrás do conteúdo */
+  }

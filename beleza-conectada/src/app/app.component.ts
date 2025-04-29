@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './shared/header/header.component';
+import { RouterModule } from '@angular/router'; // ✅ IMPORTAR ISSO
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterModule, HeaderComponent], // ✅ ADICIONAR AQUI
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  title = 'beleza-conectada';
-}
+export class AppComponent {}
