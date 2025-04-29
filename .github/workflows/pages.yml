@@ -31,7 +31,7 @@ jobs:
       # 3️⃣ publicar artefato — caminho relativo à RAIZ do repositório
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: beleza-conectada/dist/beleza-conectada   # contém index.html
+          path: beleza-conectada/dist/beleza-conectada/browser  # contém index.html
 
   deploy:
     needs: build
